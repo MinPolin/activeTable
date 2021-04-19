@@ -1,1 +1,1 @@
-web: gunicorn activeTable.wsgi --log-file=-
+web: gunicorn djangoProject.wsgi --log-file=-
