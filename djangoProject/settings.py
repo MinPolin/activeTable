@@ -114,7 +114,14 @@ AUTH_PASSWORD_VALIDATORS = [
 CORS_ALLOWED_ORIGINS = [
     '*'
 ]
-
+CORS_ALLOW_METHODS = [
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
+]
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
