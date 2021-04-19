@@ -4,8 +4,10 @@ from django.http import JsonResponse
 from .models import Data
 
 def data_store(req):
+    print('pppp')
+    print(req)
     ret_dict = dict()
-    get_data = req.POST
+    get_data = req.GET
     base_id = get_data['base_id']
     fon_id = get_data['fon_id']
     new = Data(base_id=base_id, fon_id=fon_id)
@@ -24,3 +26,6 @@ def get_one(req):
         ret_dict['flag'] = False
 
     return JsonResponse(ret_dict)
+
+def index(req):
+    return render(req,'index.html',locals())
