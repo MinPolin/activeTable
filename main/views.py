@@ -21,6 +21,7 @@ def get_one(req):
     ret_dict = dict()
 
     data = Data.objects.filter(status='w').first()
+    print(data)
     if data:
         ret_dict['base_id'] = data.base_id
         ret_dict['fon_id'] = data.fon_id
@@ -37,7 +38,7 @@ def get_status(req):
     ret_dict = dict()
     status = req.GET['status']
     base_id = req.GET['base_id']
-    data = Data.objects.get( base_id=base_id)
+    data = Data.objects.get(base_id=base_id, status='d')
     data.status = status
     data.save()
     return JsonResponse(ret_dict)
