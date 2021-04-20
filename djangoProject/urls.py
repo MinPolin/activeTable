@@ -24,5 +24,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('data_store/', views.data_store),
     path('get_one/', views.get_one),
+    path('get_status/', views.get_status),
 
 ]
