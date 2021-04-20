@@ -19,10 +19,11 @@ def data_store(req):
 
 def get_one(req):
     ret_dict = dict()
+    get_data = req.GET
     data = Data.objects.filter(status='w').first()
     if data:
-        ret_dict['base_id'] = data.base_id
-        ret_dict['fon_id'] = data.fon_id
+        # ret_dict['base_id'] = data.base_id
+        # ret_dict['fon_id'] = data.fon_id
         ret_dict['flag'] = True
         data.status = 'd'
         data.save()
