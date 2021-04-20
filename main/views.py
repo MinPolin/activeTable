@@ -9,8 +9,12 @@ def data_store(req):
     get_data = req.GET
     base_id = get_data['base_id']
     fon_id = get_data['fon_id']
-    new = Data(base_id=base_id, fon_id=fon_id)
-    new.save()
+    if base_id and fon_id:
+        new = Data(base_id=base_id, fon_id=fon_id)
+        new.save()
+        ret_dict['flag'] = True
+    else:
+        ret_dict['flag'] = False
     return JsonResponse(ret_dict)
 
 def get_one(req):
