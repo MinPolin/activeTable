@@ -52,6 +52,8 @@ def get_status(req):
     ret_dict = dict()
     a=[]
     data = Data.objects.filter(status='e')
+    ret_dict['errors']={}
+    ret_dict['saved']={}
     for item in data:
         ret_dict['errors'][item.id] = item.error_text
     data = Data.objects.filter(status='s')
