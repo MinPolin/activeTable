@@ -51,19 +51,10 @@ def set_status(req):
 
 def get_status(req):
     ret_dict = dict()
-    st='wd'
-
-    STATUS = (
-        ('w', "Ожидает отправки"),
-        ('d', 'Отправлен'),
-        ('s', 'Успешно сохранен'),
-        ('e', 'Ошибка'),
-    )
-    data = Data.objects.all()
+    data = Data.objects.filter(status='e')
     for item in data:
-        st+=item.status
-    for k,v in STATUS:
-        ret_dict[v]=st.count(k)
+        ret_dict[item.id]=item.error_text
+
 
     return JsonResponse(ret_dict)
 
