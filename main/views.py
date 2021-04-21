@@ -19,9 +19,11 @@ def data_store(req):
 
 def get_one(req):
     ret_dict = dict()
-
+    test = Data.objects.all()
+    for item in test:
+        print(item.base_id, item.status)
     data = Data.objects.filter(status='w').first()
-    print(Data.objects.all())
+
     print(data)
     if data:
         ret_dict['base_id'] = data.base_id
