@@ -21,6 +21,7 @@ def get_one(req):
     ret_dict = dict()
 
     data = Data.objects.filter(status='w').first()
+    print(Data.objects.all())
     print(data)
     if data:
         ret_dict['base_id'] = data.base_id
