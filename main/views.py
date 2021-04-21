@@ -51,17 +51,19 @@ def set_status(req):
 
 def get_status(req):
     ret_dict = dict()
-    st=''
-    st_arr = ['w','d','s','e']
+    st='wd'
+
+    STATUS = (
+        ('w', "Ожидает отправки"),
+        ('d', 'Отправлен'),
+        ('s', 'Успешно сохранен'),
+        ('e', 'Ошибка'),
+    )
     data = Data.objects.all()
     for item in data:
         st+=item.status
-    for item in st_arr:
-        st_lable = Data.objects.filter(status=item).first().status.choises
-        print(st_lable,item)
-        st_count = st.count(item)
-        ret_dict[st_lable]=st_count
-
+    for k,v in STATUS:
+        ret_dict[v]=st.count(k)
 
     return JsonResponse(ret_dict)
 
