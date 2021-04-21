@@ -25,5 +25,6 @@ urlpatterns = [
     path('data_store/', views.data_store),
     path('get_one/', views.get_one),
     path('get_status/', views.get_status),
+    path('set_status/', views.set_status),
 
 ]

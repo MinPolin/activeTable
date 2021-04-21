@@ -1,8 +1,10 @@
 from django.db import models
+
 class Data(models.Model):
-    base_id = models.CharField(max_length=64)
-    fon_id = models.CharField(max_length=200)
+    base_id = models.CharField(max_length=64,default='')
+    fon_id = models.CharField(max_length=200,default='')
     time = models.DateTimeField(auto_now_add=True, auto_now=False)
+    error_text = models.TextField(default='')
     STATUS = (
         ('w', 'Ожидает отправки'),
         ('d', 'Отправлен'),

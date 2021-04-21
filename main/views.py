@@ -37,14 +37,25 @@ def get_one(req):
 
     return JsonResponse(ret_dict)
 
-def get_status(req):
+def set_status(req):
     ret_dict = dict()
     status = req.GET['status']
+
+    error_text = req.GET['error_text']
     base_id = req.GET['base_id']
     data = Data.objects.get(base_id=base_id, status='d')
     data.status = status
+    data.error_text=error_text
     data.save()
     return JsonResponse(ret_dict)
+
+def get_status(req):
+    ret_dict = dict()
+    data = Data.objects.all().status
+    print(data)
+    return JsonResponse(ret_dict)
+
+
 
 
 
