@@ -53,7 +53,8 @@ def get_status(req):
     ret_dict = dict()
     data = Data.objects.filter(status='e')
     for item in data:
-        ret_dict[item.id]=item.error_text
+        ret_dict['errors'][item.id]=item.error_text
+
 
 
     return JsonResponse(ret_dict)
