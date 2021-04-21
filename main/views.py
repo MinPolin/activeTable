@@ -4,7 +4,7 @@ from django.http import JsonResponse
 from .models import Data
 
 def data_store(req):
-    print('pppp')
+
     ret_dict = dict()
     get_data = req.GET
     base_id = get_data['base_id']
@@ -20,8 +20,7 @@ def data_store(req):
 def get_one(req):
     ret_dict = dict()
     test = Data.objects.all()
-    for item in test:
-        print(item.base_id, item.status)
+
     data = Data.objects.filter(status='w').first()
 
     print(data)
@@ -51,11 +50,14 @@ def set_status(req):
 
 def get_status(req):
     ret_dict = dict()
+    a=[]
     data = Data.objects.filter(status='e')
     for item in data:
-        ret_dict['errors'][item.id]=item.error_text
-
-
+        ret_dict['errors'][item.id] = item.error_text
+    data = Data.objects.filter(status='s')
+    for item in data:
+        a.append(item.base_id)
+        ret_dict['saved'] = a
 
     return JsonResponse(ret_dict)
 
